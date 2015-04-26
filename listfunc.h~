@@ -8,12 +8,6 @@
 *  Inicialização, inserção, impressão, liberação
 * Parte 2:
 *  Usando ponteiro para ponteiro (insere2)
-*
-* Compilar com:
-* gcc -Wall main.c listfunc.c -oversaoX
-*
-* Testar memória com:
-* valgrind --tool=memcheck --leak-check=yes --show-reachable=yes ./versaoX
 */
 
 #ifndef LISTFUNC_H

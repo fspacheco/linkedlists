@@ -26,14 +26,6 @@ Lista* insere_simples(int dado, Lista* lst) {
    return novo;
 }
 
-void insere(int dado, Lista** lst) {
-   Lista* novo = (Lista*) malloc(sizeof(Lista));
-   if (novo==NULL) exit(EXIT_FAILURE);
-   novo->dado = dado;
-   novo->prox = *lst;
-   *lst=novo;   
-}
-
 void imprime(Lista* lst) {
    Lista *p;
    int k=0;
