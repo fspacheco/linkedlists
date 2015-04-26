@@ -10,6 +10,9 @@
 *  Usando ponteiro para ponteiro (insere2)
 * Parte 3:
 *  Funções de busca e remoção
+* Parte 4:
+*  Inserção ordenada
+*
 */
 
 #include "listfunc.h"
@@ -23,9 +26,10 @@ int main(void)
    Lista *b = NULL; 
    printf("##%p##\n",&lst);
    imprime(lst);
-   insere(100, &lst);
-   insere(97, &lst);
-   insere(42, &lst);
+   insere_ordenado(100, &lst);
+   insere_ordenado(97, &lst);
+   insere_ordenado(42, &lst);
+   insere_ordenado(250, &lst);
    imprime(lst);
    b=busca(lst, 97);
    if (b!=NULL) printf("Encontrado: %d\n", b->dado);
@@ -34,7 +38,8 @@ int main(void)
    }
    else {
      printf("Elemento não encontrado\n");
-   } 
+   }
+   imprime(lst);
    libera(lst);
    lst=NULL;
    imprime(lst);

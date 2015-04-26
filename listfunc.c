@@ -10,6 +10,9 @@
 *  Usando ponteiro para ponteiro (insere2)
 * Parte 3:
 *  Funções de busca e remoção
+* Parte 4:
+*  Inserção ordenada
+*
 */
 
 #include "listfunc.h"
@@ -22,7 +25,9 @@ Lista* inicializa(void) {
 
 Lista* insere_simples(int dado, Lista* lst) {
    Lista* novo = (Lista*) malloc(sizeof(Lista));
-   if (novo==NULL) exit(EXIT_FAILURE);
+   if (novo==NULL) {
+     exit(EXIT_FAILURE);
+   }
    novo->dado = dado;
    novo->prox = lst;
    return novo;
@@ -30,7 +35,9 @@ Lista* insere_simples(int dado, Lista* lst) {
 
 void insere(int dado, Lista** lst) {
    Lista* novo = (Lista*) malloc(sizeof(Lista));
-   if (novo==NULL) exit(EXIT_FAILURE);
+   if (novo==NULL) {
+     exit(EXIT_FAILURE);
+   }
    novo->dado = dado;
    novo->prox = *lst;
    *lst=novo;   
@@ -90,5 +97,38 @@ int apaga(Lista** lst, int dado) {
   }
   free(p);
   return 1;/*sucesso*/
+}
+
+/* função auxiliar: cria e inicializa um nó */
+Lista* cria (int dado) {
+  Lista* novo = (Lista*) malloc(sizeof(Lista));
+  if (novo==NULL) {
+    exit(EXIT_FAILURE);
+  }
+  novo->dado = dado;
+  return novo;
+}
+
+/* função insere_ordenado: insere elemento em ordem */
+void insere_ordenado (int dado, Lista** lst) {
+  Lista* novo = cria(dado); /* cria novo nó */
+  Lista* ant = NULL; /* ponteiro para elemento anterior */
+  Lista* p = *lst;  /* ponteiro para percorrer a lista*/
+  /* procura posição de inserção */
+  while (p != NULL && p->dado < dado) {
+    ant = p;
+    p = p->prox;
+  }
+  /* insere elemento */
+  if (ant == NULL) {
+  /* insere elemento no início */
+    novo->prox = *lst;
+    *lst = novo;
+  }
+  else {
+    /* insere elemento no meio da lista */
+    novo->prox = ant->prox;
+    ant->prox = novo;
+  }
 }
 

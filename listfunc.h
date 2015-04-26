@@ -10,6 +10,8 @@
 *  Usando ponteiro para ponteiro (insere2)
 * Parte 3:
 *  Funções de busca e remoção
+* Parte 4:
+*  Inserção ordenada
 *
 * Compilar com:
 * gcc -Wall main.c listfunc.c -oversaoX
@@ -58,5 +60,9 @@ Lista* busca(Lista* lst, int dado);
 /*! @brief Remove um elemento da lista a partir de uma entrada. Retorna 1 se sucesso e 0 se não encontrado
 */
 int apaga(Lista** lst, int dado);
+
+/*! @brief Insere elemento em ordem
+*/
+void insere_ordenado (int dado, Lista** lst);
 
 #endif
