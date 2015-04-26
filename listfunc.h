@@ -8,6 +8,8 @@
 *  Inicialização, inserção, impressão, liberação
 * Parte 2:
 *  Usando ponteiro para ponteiro (insere2)
+* Parte 3:
+*  Funções de busca e remoção
 *
 * Compilar com:
 * gcc -Wall main.c listfunc.c -oversaoX
@@ -47,6 +49,14 @@ void imprime(Lista* lst);
 
 /*! @brief Desaloca todos os elementos da lista
 */
-void libera (Lista* lst);
+void libera(Lista* lst);
+
+/*! @brief Busca um elemento da lista a partir de uma entrada
+*/
+Lista* busca(Lista* lst, int dado);
+
+/*! @brief Remove um elemento da lista a partir de uma entrada. Retorna 1 se sucesso e 0 se não encontrado
+*/
+int apaga(Lista** lst, int dado);
 
 #endif

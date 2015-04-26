@@ -8,6 +8,8 @@
 *  Inicialização, inserção, impressão, liberação
 * Parte 2:
 *  Usando ponteiro para ponteiro (insere2)
+* Parte 3:
+*  Funções de busca e remoção
 */
 
 #include "listfunc.h"
@@ -17,12 +19,22 @@
 
 int main(void)
 {
-   Lista* lst = inicializa();
+   Lista *lst = inicializa();
+   Lista *b = NULL; 
    printf("##%p##\n",&lst);
    imprime(lst);
    insere(100, &lst);
    insere(97, &lst);
+   insere(42, &lst);
    imprime(lst);
+   b=busca(lst, 97);
+   if (b!=NULL) printf("Encontrado: %d\n", b->dado);
+   if (apaga(&lst, 97)) {
+     printf("Elemento removido\n");
+   }
+   else {
+     printf("Elemento não encontrado\n");
+   } 
    libera(lst);
    lst=NULL;
    imprime(lst);

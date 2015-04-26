@@ -8,6 +8,8 @@
 *  Inicialização, inserção, impressão, liberação
 * Parte 2:
 *  Usando ponteiro para ponteiro (insere2)
+* Parte 3:
+*  Funções de busca e remoção
 */
 
 #include "listfunc.h"
@@ -45,12 +47,48 @@ void imprime(Lista* lst) {
    printf("----------------------------------------------\n");
 }
 
-void libera (Lista* lst) {
+void libera(Lista* lst) {
    Lista* p = lst;
    while (p != NULL) {
       Lista* t=p->prox; /* guarda referência para o próximo elemento*/
       free(p); /* libera a memória apontada por p */
       p = t; /* faz p apontar para o próximo */
    }
+}
+
+Lista* busca (Lista* lst, int dado) {
+  Lista* p;
+  for (p=lst; p!=NULL; p=p->prox) {
+    if (p->dado == dado) {
+      return p;
+    }
+  }
+  return NULL; /* se não achou o elemento, retorna nulo */
+}
+
+int apaga(Lista** lst, int dado) {
+  Lista* ant = NULL; /*ponteiro para elemento anterior */
+  Lista* p = *lst;/*ponteiro para percorrer a lista*/
+
+  /* procura elemento na lista, guardando anterior */
+  while (p != NULL && p->dado != dado) {
+    ant = p;
+    p = p->prox;
+  }
+  /* verifica se achou elemento */
+  if (p == NULL)
+    return 0; /* não achou: retorna 0 */
+
+  /* retira elemento */
+  if (ant == NULL) {
+  /* retira elemento do inicio */
+    *lst = p->prox;
+  }
+  else {
+    /* retira elemento do meio da lista */
+    ant->prox = p->prox;
+  }
+  free(p);
+  return 1;/*sucesso*/
 }
 
