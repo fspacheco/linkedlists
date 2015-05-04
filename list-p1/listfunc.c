@@ -103,6 +103,7 @@ int remove_evento(int dia, int mes, Lista** ev) {
     // retira elemento do meio da lista //
     ant->prox = p->prox;
   }
+  free(p->nome);
   free(p);
   return 1;//sucesso//
 }
